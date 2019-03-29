@@ -12,7 +12,7 @@ public class AuthentificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentification);
 
-        Fragment fragment = new LoginFragment();
+        Fragment fragment = new SignInFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content, fragment);
