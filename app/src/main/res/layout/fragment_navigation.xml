@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    tools:context=".NavigationFragment">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/startButton"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="190dp"
+        android:clickable="false"
+        android:enabled="false"
+        android:visibility="visible"
+        mapbox:srcCompat="@drawable/ic_navigation"
+        android:tint="#ffffff"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_location_search"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="90dp"
+        android:clickable="true"
+        android:enabled="true"
+        mapbox:srcCompat="@drawable/ic_loupe"
+        android:tint="#ffffff"
+        android:focusable="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp" />
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:mapbox_cameraTargetLat="40.73581"
+        mapbox:mapbox_cameraTargetLng="-73.99155"
+        mapbox:mapbox_cameraZoom="11" >
+
+    </com.mapbox.mapboxsdk.maps.MapView>
+
+</RelativeLayout>

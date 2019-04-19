@@ -21,6 +21,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:text="monfourny.laurent@gmail.com"
             android:hint="Email"/>
 
         <EditText
@@ -31,6 +32,7 @@
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:text="lolilol"
             android:hint="Password"/>
 
         <Button

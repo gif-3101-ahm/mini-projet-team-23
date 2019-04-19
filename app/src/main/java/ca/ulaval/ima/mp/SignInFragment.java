@@ -2,6 +2,7 @@ package ca.ulaval.ima.mp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -74,6 +75,10 @@ public class SignInFragment extends Fragment {
                                     }
                                 });
                         alertDialog.show();
+                    } else {
+                        Log.d("Signin", "connected");
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
+                        startActivity(intent);
                     }
 
                 } catch (ExecutionException e) {
