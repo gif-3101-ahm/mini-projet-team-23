@@ -1,14 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfilFragment">
+    android:background="#CF2E2E"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profil Fragment" />
+        android:layout_height="10dp"
+        android:layout_weight="6">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:orientation="vertical"
+            tools:ignore="AdapterViewChildren,UselessParent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="Profile"
+                android:textColor="#ffffff"
+                android:textSize="40dp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_user"
+                android:tint="#ffffff" />
+
+            <TextView
+                android:id="@+id/firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="First Name"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstname"
+                android:maxLines="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"
+                android:textColorHint="#FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Last Name"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#ffffff"
+                android:textColorHint="#FFFFFF"
+                />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:id="@+id/editemail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:textColor="#ffffff"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:layout_margin="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="58dp"
+            android:background="#CF2E2E"
+            android:text="Save"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+    </RelativeLayout>
+</LinearLayout>

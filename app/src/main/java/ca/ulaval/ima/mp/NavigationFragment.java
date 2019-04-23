@@ -4,6 +4,7 @@ package ca.ulaval.ima.mp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -67,6 +68,7 @@ public class NavigationFragment extends Fragment implements OnMapReadyCallback, 
     private String geojsonSourceLayerId = "geojsonSourceLayerId";
     private LocationComponent locationComponent = null;
     private DirectionsRoute currentRoute = null;
+    private String myPreferences = "myPrefs";
     private NavigationMapRoute navigationMapRoute = null;
 
     public static NavigationFragment newInstance() {
@@ -87,17 +89,27 @@ public class NavigationFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         this.mapboxMap = mapboxMap;
-        mapboxMap.setStyle(new Style.Builder().fromUrl("mapbox://styles/lolo13/cjuncf1a46aln1ft7cg1lwhvh"),
-                new Style.OnStyleLoaded() {
-                    @Override
-                    public void onStyleLoaded(@NonNull Style style) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(myPreferences, Context.MODE_PRIVATE);
+        if (!sharedPreferences.getBoolean("dark_mode", false)) {
+            mapboxMap.setStyle(new Style.Builder().fromUrl("mapbox://styles/lolo13/cjuncf1a46aln1ft7cg1lwhvh"),
+                    style1 -> {
                         mapboxMap.getStyle().addSource(new GeoJsonSource(geojsonSourceLayerId));
                         mapboxMap.getStyle().addLayer(new SymbolLayer("SYMBOL_LAYER_ID", geojsonSourceLayerId).withProperties(
                         ));
                         initSearchFab();
-                        enableLocationComponent(style);
-                    }
-                });
+                        enableLocationComponent(style1);
+                    });
+        } else {
+            mapboxMap.setStyle(Style.DARK,
+                    style12 -> {
+                        mapboxMap.getStyle().addSource(new GeoJsonSource(geojsonSourceLayerId));
+                        mapboxMap.getStyle().addLayer(new SymbolLayer("SYMBOL_LAYER_ID", geojsonSourceLayerId).withProperties(
+                        ));
+                        initSearchFab();
+                        enableLocationComponent(style12);
+                    });
+        }
+
     }
 
     private void initSearchFab() {

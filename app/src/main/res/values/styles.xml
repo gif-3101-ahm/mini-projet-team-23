@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -98,6 +98,13 @@
 
         <!-- Map style -->
         <item name="navigationViewMapStyle">mapbox://styles/lolo13/cjunksco801r61flmo5fj2gw3</item>
+    </style>
+    <style name="scrollbarlimit">
+        <item name="android:colorEdgeEffect" tools:targetApi="lollipop">#ffffffff</item>
+    </style>
+    <style name="nameOfStyle">
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlActivated">#ffffff</item>
     </style>
 
 </resources>
