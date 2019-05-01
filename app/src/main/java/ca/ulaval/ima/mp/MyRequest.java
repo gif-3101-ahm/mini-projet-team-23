@@ -21,6 +21,14 @@ import okhttp3.Response;
 public class MyRequest {
     static public String BASE_URL = "https://monapp-f1b0a.firebaseio.com";
 
+    public static MyResponse getSimple(String url) throws ExecutionException, InterruptedException {
+        GetMyRequestAsync getMyRequestAsync = new GetMyRequestAsync();
+
+        getMyRequestAsync.url = url;
+
+        return getMyRequestAsync.execute(new JSONObject()).get();
+    }
+
     public MyResponse get(String url, JSONObject headers) throws ExecutionException, InterruptedException {
         GetMyRequestAsync getMyRequestAsync = new GetMyRequestAsync();
 
@@ -53,7 +61,7 @@ public class MyRequest {
         return null;
     }
 
-    public class GetMyRequestAsync extends AsyncTask<JSONObject, Integer, MyResponse> {
+    public static class GetMyRequestAsync extends AsyncTask<JSONObject, Integer, MyResponse> {
 
         private String url = "";
 

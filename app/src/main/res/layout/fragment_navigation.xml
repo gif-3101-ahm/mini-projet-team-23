@@ -16,7 +16,7 @@
         android:layout_marginBottom="190dp"
         android:clickable="false"
         android:enabled="false"
-        android:visibility="visible"
+        android:visibility="invisible"
         mapbox:srcCompat="@drawable/ic_navigation"
         android:tint="#ffffff"
         android:layout_marginRight="20dp"
