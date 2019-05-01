@@ -76,7 +76,6 @@ public class SignInFragment extends Fragment {
                                 });
                         alertDialog.show();
                     } else {
-                        Log.d("Signin", "connected");
                         Intent intent = new Intent(getActivity(), HomeActivity.class);
                         startActivity(intent);
                     }

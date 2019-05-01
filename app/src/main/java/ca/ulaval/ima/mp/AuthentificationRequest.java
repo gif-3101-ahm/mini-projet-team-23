@@ -4,6 +4,8 @@ import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 
 
@@ -11,7 +13,8 @@ class AuthentificationRequest {
     private MyRequest myRequest = new MyRequest();
     private String API_KEY = "AIzaSyDWcvrvuALLrdOssn_Z6ATEJ6N0wg6Naps";
 
-    private static String ACCESS_TOKEN;
+    static String ACCESS_TOKEN;
+    static String USER_ID;
     private static String REFRESH_TOKEN;
 
     boolean refreshToken() throws ExecutionException, InterruptedException, JSONException {
@@ -47,6 +50,21 @@ class AuthentificationRequest {
         if (response.getCode() == 200) {
             AuthentificationRequest.ACCESS_TOKEN = jsonResponse.get("idToken").toString();
             AuthentificationRequest.REFRESH_TOKEN = jsonResponse.get("refreshToken").toString();
+
+            Log.d("response", ACCESS_TOKEN);
+
+            jsonResponse = new JSONObject(myRequest.get("/users/.json?auth=" + AuthentificationRequest.ACCESS_TOKEN, null).getBody());
+            Iterator<String> temp = jsonResponse.keys();
+
+            while (temp.hasNext()) {
+                String key = temp.next();
+                JSONObject line = jsonResponse.getJSONObject(key);
+                if (data.getString("email").equals(line.getString("email"))) {
+                    AuthentificationRequest.USER_ID = key;
+                }
+
+            }
+
         }
 
         return response.getCode() == 200;
@@ -68,10 +86,8 @@ class AuthentificationRequest {
             response = myRequest.post("/users/.json?auth=" + AuthentificationRequest.ACCESS_TOKEN, new JSONObject()
                     .put("email", data.get("email"))
                     .put("firstname", data.get("firstname"))
-                    .put("lastname", data.get("lastname"))
-                    .put("id", jsonResponse.get("localId")),
+                    .put("lastname", data.get("lastname")),
                     "json", null);
-            Log.d("response", response.getBody());
         }
 
         return response.getCode() == 200;

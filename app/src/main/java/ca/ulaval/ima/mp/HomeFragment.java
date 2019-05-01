@@ -88,6 +88,7 @@ public class HomeFragment extends Fragment {
         });
         logoutButton.setOnClickListener(view1 -> {
             Intent intent = new Intent(getActivity(), AuthentificationActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
         Location location = getLocationWithCheckNetworkAndGPS(getContext());
