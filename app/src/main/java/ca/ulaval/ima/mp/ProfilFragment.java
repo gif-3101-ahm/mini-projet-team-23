@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -123,6 +124,8 @@ public class ProfilFragment extends Fragment {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+                        Toast.makeText(getContext(), "Updated Success", Toast.LENGTH_SHORT).show();
                     }
 
                 }

@@ -52,8 +52,13 @@ import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,6 +75,7 @@ public class NavigationFragment extends Fragment implements OnMapReadyCallback, 
     private DirectionsRoute currentRoute = null;
     private String myPreferences = "myPrefs";
     private NavigationMapRoute navigationMapRoute = null;
+    NavigationRequest navigationRequest = new NavigationRequest();
 
     public static NavigationFragment newInstance() {
         return new NavigationFragment();
@@ -175,6 +181,19 @@ public class NavigationFragment extends Fragment implements OnMapReadyCallback, 
                         .lightThemeResId(R.style.CustomNavigationViewLight)
                         .darkThemeResId(R.style.CustomNavigationViewDark)
                         .build();
+                try {
+                    navigationRequest.postHistory(new JSONObject()
+                    .put("users_id", AuthentificationRequest.USER_ID)
+                    .put("created_at", new Date().getTime())
+                    .put("distance", currentRoute.distance())
+                    .put("address_to", selectedCarmenFeature.placeName()));
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 NavigationLauncher.startNavigation(NavigationFragment.this.getActivity(), options);
             }
         });

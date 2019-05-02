@@ -51,8 +51,6 @@ class AuthentificationRequest {
             AuthentificationRequest.ACCESS_TOKEN = jsonResponse.get("idToken").toString();
             AuthentificationRequest.REFRESH_TOKEN = jsonResponse.get("refreshToken").toString();
 
-            Log.d("response", ACCESS_TOKEN);
-
             jsonResponse = new JSONObject(myRequest.get("/users/.json?auth=" + AuthentificationRequest.ACCESS_TOKEN, null).getBody());
             Iterator<String> temp = jsonResponse.keys();
 
